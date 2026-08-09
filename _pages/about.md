@@ -7,7 +7,7 @@ subtitle: Software Engineer (Machine Learning) · Meta Reality Labs
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: true
+  image_circular: false
 
 selected_papers: true
 social: true
@@ -20,13 +20,6 @@ latest_posts:
 ---
 
 <style>
-  @media (min-width: 576px) {
-    .post article .profile.float-right {
-      width: auto;
-      max-width: 11rem;
-    }
-  }
-
   .post article .social {
     margin-top: 1.5rem;
   }
