@@ -2,14 +2,12 @@
 layout: about
 title: about
 permalink: /
-subtitle: Software Engineer (Machine Learning) · Meta Reality Labs
-
 profile:
-  align: right
+  align: left
   image: prof_pic.jpg
   image_circular: true
 
-selected_papers: true
+selected_papers: false
 social: true
 
 announcements:
