@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://parthsuresh.github.io/sitemap.xml
+Sitemap: https://parthsuresh.com/sitemap.xml
