@@ -1,0 +1,11 @@
+"TOSEM":
+  url: https://dl.acm.org/journal/tosem
+  color: "#00843d"
+
+"FSE":
+  url: https://conf.researchr.org/home/fse-2023
+  color: "#00369f"
+
+"INTERSPEECH":
+  url: https://www.interspeech2020.org/
+  color: "#e87722"
