@@ -89,3 +89,14 @@ All seven `test/integration_*.sh` scripts are gated by `unit-tests.yml`; run the
 - `.agents/skills/al-folio-bootstrap/SKILL.md` — new-site setup workflow.
 - `.agents/skills/al-folio-v1-migration/SKILL.md` — customized-fork migration and override drift auditing.
 - `.codex/skills` and `.claude/skills` are symlinks to `.agents/skills` for agent-specific discovery.
+
+## Cursor Cloud specific instructions
+
+The VM startup update script already runs `bundle install` and `npm ci`; you do not need to re-run them unless you change `Gemfile`/`package.json`. Standard build/serve/lint/test commands live in the "Validated local command set" above — use those; the notes here are only the non-obvious cloud gotchas.
+
+- **Toolchains are version-manager managed.** Ruby 3.3.5 (+ Bundler 4.0.6) comes from `mise`; Node comes from `nvm`. An interactive shell already activates both via `~/.bashrc`. In a non-interactive shell, activate them first (`eval "$(~/.local/bin/mise activate bash)"` and source `~/.nvm/nvm.sh`) or `ruby`/`bundle`/`node` will appear missing.
+- **Native C++ gems build with gcc, not clang.** `cc`/`c++` are pinned to gcc/g++ via `update-alternatives`; the default clang cannot find libstdc++ headers and fails to compile native extensions like `eventmachine`. Do not switch these back to clang.
+- **This checkout is a bootstrapped personal site, not the demo template.** `_config.yml` `exclude:` lists `_posts/ _projects/ _news/ _books/ _teachings/` and several `_pages/*.md`, so those collections are not built. Because of this, 3 of the 7 integration tests (`comments`, `distill`, `new_plugins`) and most of the `test/visual/` specs fail — their fixture pages (e.g. `blog/2021/distill/`) never build. This is a pre-existing content state (the `Integration tests` workflow is red on `main` for the same reason), not an environment fault. To exercise those tests, build with the demo collections re-included via a throwaway `--config "_config.yml,<override>.yml"` that replaces `exclude:` — never edit the committed `_config.yml` to do it.
+- **Visual parity tests need a baseline.** The `parity.spec.js` tests skip unless `BASELINE_URL` points at a served `v0.16.3` baseline (see `.github/workflows/visual-regression.yml`); Playwright browsers and their system deps are already installed. Reuse a running dev server with `NO_WEBSERVER=1 npm run test:visual`.
+- **`jekyll serve` prints a harmless watch warning.** "directory is already being watched" for `.claude/skills` / `.agents/skills` is just the symlinked skills dirs; the server still runs and serves at `http://localhost:4000/al-folio/`.
+- **Jupyter notebook posts** render via `jupyter-nbconvert` installed under `~/.local/bin` (on `PATH` in interactive shells); if it is missing the build only warns and skips notebook rendering.
