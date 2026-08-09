@@ -23,7 +23,7 @@ latest_posts:
   @media (min-width: 576px) {
     .post article .profile.float-right {
       width: auto;
-      max-width: 11rem;
+      max-width: 14rem;
     }
   }
 
