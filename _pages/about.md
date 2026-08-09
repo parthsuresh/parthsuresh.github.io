@@ -2,12 +2,14 @@
 layout: about
 title: about
 permalink: /
+subtitle: Software Engineer (Machine Learning) · Meta Reality Labs
+
 profile:
-  align: left
+  align: right
   image: prof_pic.jpg
   image_circular: true
 
-selected_papers: false
+selected_papers: true
 social: true
 
 announcements:
@@ -16,6 +18,19 @@ announcements:
 latest_posts:
   enabled: false
 ---
+
+<style>
+  @media (min-width: 576px) {
+    .post article .profile.float-right {
+      width: auto;
+      max-width: 11rem;
+    }
+  }
+
+  .post article .social {
+    margin-top: 1.5rem;
+  }
+</style>
 
 I am a Software Engineer (Machine Learning) at Meta Reality Labs. I work on synthetic data, data curation, and benchmarks for evaluating language and multimodal models.
 
