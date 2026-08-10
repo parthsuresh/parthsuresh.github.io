@@ -34,6 +34,18 @@ latest_posts:
     font-style: normal;
     white-space: nowrap;
   }
+  /* Demarcate Selected publications like the News table divider */
+  .post article h2.about-section-heading {
+    border-bottom: 1px solid var(--global-divider-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  /* Row lines: table-borderless sets border:0 !important inside a CSS layer, which beats
+     unlayered border !important — use box-shadow instead */
+  .news table.table th,
+  .news table.table td {
+    box-shadow: inset 0 1px 0 0 var(--global-divider-color);
+  }
 </style>
 
 I am a Member of Technical Staff at [Datology AI](https://www.datologyai.com/), where I work on synthetic data generation techniques for web and long-context data. Before Datology, I was a Software Engineer (Machine Learning) at Meta Reality Labs, working on synthetic data, data curation, and benchmarks for evaluating language and multimodal models - including egocentric and wearable settings.
