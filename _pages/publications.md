@@ -2,10 +2,18 @@
 layout: page
 permalink: /publications/
 title: publications
-description: Publications in reversed chronological order.
+description: Publications in reverse chronological order.
 nav: true
 nav_order: 1
 ---
+
+<style>
+  .publications ol.bibliography li .author > em {
+    border-bottom: 1px solid;
+    font-style: normal;
+    white-space: nowrap;
+  }
+</style>
 
 <!-- _pages/publications.md -->
 

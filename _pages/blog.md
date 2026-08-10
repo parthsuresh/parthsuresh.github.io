@@ -2,8 +2,8 @@
 layout: default
 permalink: /blog/
 title: writing
-nav: true
-nav_order: 2
+nav: false
+nav_order: 3
 pagination:
   enabled: true
   collection: posts

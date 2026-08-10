@@ -6,13 +6,13 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Parth
 last_name: Suresh
 description: >
-  Parth Suresh, Software Engineer (Machine Learning) at Meta Reality Labs.
-  Works on synthetic data, data curation, and evals.
+  Parth Suresh, Member of Technical Staff at Datology AI.
+  Works on synthetic data generation for web and long-context data.
 footer_text:
-keywords: machine learning, synthetic data, software engineering, research
+keywords: machine learning, synthetic data, long context, software engineering, research
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
-apple_touch_icon: # image name in /assets/img/ (or a rooted path / absolute URL) used for iOS home-screen bookmarks; needs a real 180x180 PNG, since Safari ignores the emoji favicon above. Left empty, iOS falls back to a screenshot of the page.
+icon: favicon.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+apple_touch_icon: apple-touch-icon.png # image name in /assets/img/ (or a rooted path / absolute URL) used for iOS home-screen bookmarks; needs a real 180x180 PNG, since Safari ignores the emoji favicon above. Left empty, iOS falls back to a screenshot of the page.
 
 url: https://parthsuresh.com # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
@@ -237,11 +237,9 @@ exclude:
   - _pages/profiles.md
   - _pages/dropdown.md
   - _pages/books.md
-  - _pages/news.md
   - _pages/plugins.md
   - _posts/
   - _projects/
-  - _news/
   - _books/
   - _teachings/
   - assets/json/resume.json
@@ -420,7 +418,7 @@ filtered_bibtex_keywords:
   ]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
-max_author_limit: 3 # leave blank to always show all authors
+max_author_limit: 5 # leave blank to always show all authors
 more_authors_animation_delay: 10 # more authors are revealed on click using animation; smaller delay means faster animation
 
 # Enables publication thumbnails. If disabled, none of the publications will display thumbnails, even if specified in the bib entry.
