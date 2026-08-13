@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-[CRAG-MM](https://arxiv.org/abs/2510.26160) won the Best Paper Award at KDD 2026 in the Datasets and Benchmarks track.
+[CRAG-MM](https://arxiv.org/abs/2510.26160) won the Best Paper Award at KDD 2026 in the Datasets and Benchmarks track!
