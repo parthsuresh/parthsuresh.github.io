@@ -41,6 +41,10 @@ on:
 jobs:
   comments-integration-tests:
     runs-on: ubuntu-latest
+    # Template-only: a personal site may shadow gem files (_layouts, _sass) and
+    # exclude demo collections, so the starter style contract and fixture tests
+    # cannot pass here.
+    if: github.repository == 'alshedivat/al-folio'
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4

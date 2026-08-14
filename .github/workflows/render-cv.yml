@@ -17,6 +17,9 @@ jobs:
   rendercv:
     name: RenderCV
     runs-on: ubuntu-latest
+    # Template-only: `_data/cv.yml` is still the Einstein demo, and this site
+    # excludes the CV page. Rendering it fails validation and is unused.
+    if: github.repository == 'alshedivat/al-folio'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

@@ -37,6 +37,9 @@ jobs:
   lighthouse-badger-easy:
     runs-on: ubuntu-latest
     timeout-minutes: 8
+    # Template-only: needs LIGHTHOUSE_BADGER_TOKEN, targets the al-folio demo
+    # URL, and checks out `master` rather than this site's `main` branch.
+    if: github.repository == 'alshedivat/al-folio'
     steps:
       - name: Preparatory Tasks
         run: |

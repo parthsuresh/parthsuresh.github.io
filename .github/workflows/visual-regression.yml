@@ -38,6 +38,9 @@ jobs:
   visual-regression:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    # Template-only: compares rendering against the al-folio v0.16.3 demo, not a
+    # customized personal site.
+    if: github.repository == 'alshedivat/al-folio'
     steps:
       - name: Checkout candidate 🛎️
         uses: actions/checkout@v4
