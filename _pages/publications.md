@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: publications
-description: Publications in reverse chronological order.
+description: Papers by Parth Suresh on synthetic data, long-context training, multimodal RAG, and software engineering.
 nav: true
 nav_order: 1
 ---

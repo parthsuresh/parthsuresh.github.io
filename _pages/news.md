@@ -2,6 +2,7 @@
 layout: page
 title: news
 permalink: /news/
+description: Updates from Parth Suresh on papers, awards, and roles in synthetic data and long-context ML.
 nav: true
 nav_order: 2
 ---
