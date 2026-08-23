@@ -118,4 +118,100 @@ if ! grep -q '"@type": "Person"' "${index_html}"; then
   exit 1
 fi
 
+if ! awk '
+  BEGIN { in_script = 0; found_person = 0 }
+  $0 ~ /<script type="application\/ld\+json">/ { in_script = 1; block = "" }
+  in_script { block = block $0 }
+  in_script && $0 ~ /<\/script>/ {
+    in_script = 0
+    if (block ~ /"@type": "Person"/ && block ~ /"name": "Parth Suresh"/ && block ~ /"jobTitle"/ && block ~ /sameAs/ && block !~ /telephone/ && block !~ /email/) {
+      found_person = 1
+    }
+  }
+  END { exit found_person ? 0 : 1 }
+' "${index_html}"; then
+  echo "homepage Person JSON-LD must include name, jobTitle, and sameAs without email or telephone" >&2
+  exit 1
+fi
+
+if ! grep -q 'property="og:type"' "${index_html}"; then
+  echo "homepage is missing og:type" >&2
+  exit 1
+fi
+
+if ! grep -q 'property="og:image"' "${index_html}"; then
+  echo "homepage is missing og:image" >&2
+  exit 1
+fi
+
+if ! grep -q 'prof_pic.jpg' "${index_html}"; then
+  echo "og:image should point at the profile photo" >&2
+  exit 1
+fi
+
+if ! grep -q '## When to use this' "${llms_txt}"; then
+  echo "llms.txt must include a When to use this section" >&2
+  exit 1
+fi
+
+if ! grep -q 'Distinguish this Parth Suresh' "${llms_txt}"; then
+  echo "llms.txt when-to-use guidance must name a concrete job" >&2
+  exit 1
+fi
+
+if ! grep -q 'There is no OpenAPI, MCP, or RPC endpoint here' "${llms_txt}"; then
+  echo "llms.txt must say this host is not a product API" >&2
+  exit 1
+fi
+
+for page_name in about contact privacy; do
+  page_html="${site_dir}/${page_name}/index.html"
+  if [ ! -f "${page_html}" ]; then
+    echo "missing trust page: ${page_html}" >&2
+    exit 1
+  fi
+  page_chars="$(python3 - "${page_html}" <<'PY'
+import re
+import sys
+from pathlib import Path
+
+html = Path(sys.argv[1]).read_text(encoding="utf-8")
+html = re.sub(r"<script\b[^>]*>.*?</script>", " ", html, flags=re.I | re.S)
+html = re.sub(r"<style\b[^>]*>.*?</style>", " ", html, flags=re.I | re.S)
+text = re.sub(r"<[^>]+>", " ", html)
+text = re.sub(r"\s+", " ", text).strip()
+print(len(text))
+PY
+)"
+  if [ "${page_chars}" -lt 500 ]; then
+    echo "${page_name} page raw text is ${page_chars} chars; expected at least 500" >&2
+    exit 1
+  fi
+done
+
+if ! grep -qx '# About' "${site_dir}/about.md"; then
+  echo "about.md must keep the H1 on its own line" >&2
+  exit 1
+fi
+
+if ! grep -qx '# Contact' "${site_dir}/contact.md"; then
+  echo "contact.md must keep the H1 on its own line" >&2
+  exit 1
+fi
+
+if ! grep -qx '# Privacy' "${site_dir}/privacy.md"; then
+  echo "privacy.md must keep the H1 on its own line" >&2
+  exit 1
+fi
+
+if ! grep -q 'no public email address' "${site_dir}/contact/index.html"; then
+  echo "contact page must say there is no public inbox" >&2
+  exit 1
+fi
+
+if grep -qiE 'parthsuresh\.work@gmail\.com|mailto:|telephone' "${site_dir}/contact/index.html" "${site_dir}/privacy/index.html" "${site_dir}/about/index.html"; then
+  echo "trust pages must not publish email, mailto, or telephone" >&2
+  exit 1
+fi
+
 echo "researcher discovery integration checks passed"

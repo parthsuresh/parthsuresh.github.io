@@ -91,3 +91,25 @@ layout: default
     {% endif %}
   </article>
 </div>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.first_name }} {{ site.last_name }}",
+    "url": "{{ site.url }}{{ site.baseurl }}/",
+    "image": "{{ site.url }}{{ site.baseurl }}/assets/img/prof_pic.jpg",
+    "jobTitle": "Member of Technical Staff",
+    "description": "Member of Technical Staff at Datology AI. Works on synthetic data generation for web-scale and long-context data.",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Datology AI",
+      "url": "https://www.datologyai.com/"
+    },
+    "sameAs": [
+      "https://scholar.google.com/citations?user=X_0IsZwAAAAJ",
+      "https://github.com/parthsuresh",
+      "https://twitter.com/parthsur",
+      "https://www.linkedin.com/in/parth-suresh"
+    ]
+  }
+</script>
