@@ -9,7 +9,7 @@ cleanup() {
 trap cleanup EXIT
 
 site_dir="${tmp_dir}/_site"
-bundle exec jekyll build -d "${site_dir}" >/dev/null
+JEKYLL_ENV=production bundle exec jekyll build -d "${site_dir}" >/dev/null
 
 index_html="${site_dir}/index.html"
 robots_txt="${site_dir}/robots.txt"
@@ -98,8 +98,8 @@ if ! grep -q '^# Parth Suresh' "${llms_txt}"; then
   exit 1
 fi
 
-if ! grep -q '^# Parth Suresh' "${index_md}"; then
-  echo "index.md must be raw markdown, not HTML" >&2
+if ! grep -qx '# Parth Suresh' "${index_md}"; then
+  echo "index.md must keep the H1 on its own line (production minifier must not collapse it)" >&2
   exit 1
 fi
 

@@ -22,7 +22,7 @@ fi
 node --test "${repo_root}/cloudflare/markdown-negotiation/test/"*.test.mjs
 
 site_dir="${tmp_dir}/_site"
-bundle exec jekyll build -d "${site_dir}" >/dev/null
+JEKYLL_ENV=production bundle exec jekyll build -d "${site_dir}" >/dev/null
 
 for required in "${site_dir}/index.md" "${site_dir}/publications.md" "${site_dir}/news.md" "${site_dir}/404.md"; do
   if [ ! -f "${required}" ]; then
@@ -31,13 +31,13 @@ for required in "${site_dir}/index.md" "${site_dir}/publications.md" "${site_dir
   fi
 done
 
-if ! grep -q '^# Publications' "${site_dir}/publications.md"; then
-  echo "publications.md must be raw markdown" >&2
+if ! grep -qx '# Publications' "${site_dir}/publications.md"; then
+  echo "publications.md must keep the H1 on its own line" >&2
   exit 1
 fi
 
-if ! grep -q '^# News' "${site_dir}/news.md"; then
-  echo "news.md must be raw markdown" >&2
+if ! grep -qx '# News' "${site_dir}/news.md"; then
+  echo "news.md must keep the H1 on its own line" >&2
   exit 1
 fi
 
