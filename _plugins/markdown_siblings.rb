@@ -9,6 +9,9 @@ class MarkdownSiblingsGenerator < Jekyll::Generator
   def generate(site)
     write_page(site, "publications.md", publications_markdown(site))
     write_page(site, "news.md", news_markdown(site))
+    write_page(site, "about.md", page_source_markdown(site, "_pages/about-page.md", "About"))
+    write_page(site, "contact.md", page_source_markdown(site, "_pages/contact.md", "Contact"))
+    write_page(site, "privacy.md", page_source_markdown(site, "_pages/privacy.md", "Privacy"))
     write_page(site, "404.md", not_found_markdown(site))
   end
 
@@ -41,6 +44,15 @@ class MarkdownSiblingsGenerator < Jekyll::Generator
       lines << ""
     end
     lines.join("\n")
+  end
+
+  def page_source_markdown(site, relative_path, heading)
+    path = File.join(site.source, relative_path)
+    return "" unless File.exist?(path)
+
+    body = strip_front_matter(File.read(path)).strip
+    body = body.gsub("{{ site.url }}{{ site.baseurl }}", "#{site.config['url']}#{site.config['baseurl']}")
+    "# #{heading}\n\n#{body}\n"
   end
 
   def news_markdown(site)
