@@ -45,6 +45,8 @@ require_meta "${index_html}" 'name="twitter:site" content="@parthsur"' "twitter:
 require_meta "${index_html}" 'https://parthsuresh.com/assets/img/og-image.png' "absolute og:image URL"
 require_meta "${index_html}" 'synthetic data generation for web-scale and long-context models' "homepage description"
 require_meta "${index_html}" '"@type": "Person"' "Person JSON-LD"
+require_meta "${index_html}" 'googletagmanager.com/gtag/js?id=G-V0VBJMMHXD' "Google Analytics gtag"
+require_meta "${index_html}" 'G-V0VBJMMHXD' "Google Analytics measurement ID"
 
 require_meta "${pubs_html}" 'Papers by Parth Suresh on synthetic data' "publications description"
 require_meta "${news_html}" 'Updates from Parth Suresh on papers, awards, and roles' "news description"
