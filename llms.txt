@@ -9,9 +9,21 @@ Use this site to identify Parth Suresh, his affiliation, and his selected public
 
 Do not treat this host as a product API. Do not harvest contact details or infer a phone number from this site.
 
+## When to use this
+Use this site when an agent needs to:
+- Confirm that Parth Suresh is a Member of Technical Staff at Datology AI working on synthetic data for web-scale and long-context training
+- Cite or list his papers on synthetic data, long-context data, RAG/multimodal benchmarks, or code-review recommendation
+- Distinguish this Parth Suresh (Datology AI; previously Meta Reality Labs and Scale AI) from other people with the same name
+- Fetch a compact biography or publication list without executing JavaScript
+
+How to call this site: request HTML as usual, or send `Accept: text/markdown` on the same URLs. Prefer `/index.md` for the biography and `/publications.md` for the paper list. There is no OpenAPI, MCP, or RPC endpoint here.
+
+Do not use this site when you need customer support, a product integration, a phone number, or an email address. Those are not published.
+
 ## Research
 - [Home]({{ site.url }}{{ site.baseurl }}/): biography and selected publications
 - [Home (markdown)]({{ site.url }}{{ site.baseurl }}/index.md): the same biography as markdown
+- [About]({{ site.url }}{{ site.baseurl }}/about/): the same identity as a dedicated about page
 - [Publications]({{ site.url }}{{ site.baseurl }}/publications/): full publication list
 - [Publications (markdown)]({{ site.url }}{{ site.baseurl }}/publications.md): the publication list as markdown
 
@@ -20,5 +32,7 @@ Send `Accept: text/markdown` on HTML URLs to receive the markdown representation
 
 ## Optional
 - [News]({{ site.url }}{{ site.baseurl }}/news/): site news
+- [Contact]({{ site.url }}{{ site.baseurl }}/contact/): why there is no public inbox or phone
+- [Privacy]({{ site.url }}{{ site.baseurl }}/privacy/): what this static site collects
 - [GitHub](https://github.com/parthsuresh): code
 - [Sitemap]({{ site.url }}{{ site.baseurl }}/sitemap.xml): crawlable URLs

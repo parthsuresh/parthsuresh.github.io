@@ -5,9 +5,7 @@
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Parth
 last_name: Suresh
-description: >
-  Parth Suresh, Member of Technical Staff at Datology AI.
-  Works on synthetic data generation for web and long-context data.
+description: Parth Suresh, Member of Technical Staff at Datology AI. Works on synthetic data generation for web and long-context data.
 footer_text:
 keywords: machine learning, synthetic data, long context, software engineering, research
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
@@ -105,9 +103,9 @@ max_width: 930px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: true # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+og_image: /assets/img/prof_pic.jpg # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -327,7 +325,7 @@ jekyll-minifier:
   # Markdown siblings are emitted from .html sources so Kramdown does not render
   # them. jekyll-minifier still treats those pages as HTML and collapses newlines
   # in production, so keep the published .md files out of the minifier.
-  exclude: ["robots.txt", "llms.txt", "index.md", "publications.md", "news.md", "404.md"]
+  exclude: ["robots.txt", "llms.txt", "index.md", "publications.md", "news.md", "about.md", "contact.md", "privacy.md", "404.md"]
 
 # -----------------------------------------------------------------------------
 # Terser
