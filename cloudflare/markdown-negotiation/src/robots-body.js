@@ -1,0 +1,64 @@
+export const RESEARCHER_ROBOTS = `# Researcher indexing policy:
+# allow frontier training, AI-search, and on-demand fetch crawlers.
+# Keep bulk scrapers that do not identify a lab out.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+Sitemap: https://parthsuresh.com/sitemap.xml
+`;
+
+export function isRobotsPath(pathname) {
+  return pathname === "/robots.txt";
+}
+
+export function robotsResponse() {
+  return {
+    status: 200,
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "cache-control": "public, max-age=300",
+    },
+    body: RESEARCHER_ROBOTS,
+  };
+}

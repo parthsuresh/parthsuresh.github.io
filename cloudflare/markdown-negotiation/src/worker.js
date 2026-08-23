@@ -1,4 +1,5 @@
 import { decide, fromHtml, isPlainTextPath, markdownHeaders, markdownNotFound, siblingPath } from "./negotiate.js";
+import { isRobotsPath, robotsResponse } from "./robots-body.js";
 
 function originRequest(request, url) {
   const headers = new Headers(request.headers);
@@ -39,11 +40,18 @@ export default {
       return fetch(request);
     }
 
+    const url = new URL(request.url);
+    if (isRobotsPath(url.pathname)) {
+      const robots = robotsResponse();
+      return new Response(request.method === "HEAD" ? null : robots.body, {
+        status: robots.status,
+        headers: robots.headers,
+      });
+    }
+
     if (decide(request.headers.get("Accept")) === "html") {
       return withVaryAccept(await fetch(request));
     }
-
-    const url = new URL(request.url);
     if (isPlainTextPath(url.pathname)) {
       const res = await fetch(originRequest(request, url));
       const body = await res.text();
