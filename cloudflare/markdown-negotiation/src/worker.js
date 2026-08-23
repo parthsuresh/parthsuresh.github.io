@@ -1,5 +1,6 @@
 import { decide, fromHtml, isPlainTextPath, markdownHeaders, markdownNotFound, siblingPath } from "./negotiate.js";
 import { isRobotsPath, robotsResponse } from "./robots-body.js";
+import { stripHarvestableContact } from "./strip-contact.js";
 
 function originRequest(request, url) {
   const headers = new Headers(request.headers);
@@ -34,6 +35,22 @@ function markdownResponse(status, body) {
   });
 }
 
+async function htmlFromOrigin(request) {
+  const response = await fetch(request);
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("text/html")) {
+    return withVaryAccept(response);
+  }
+  const body = stripHarvestableContact(await response.text());
+  return withVaryAccept(
+    new Response(body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: response.headers,
+    })
+  );
+}
+
 export default {
   async fetch(request) {
     if (request.method !== "GET" && request.method !== "HEAD") {
@@ -50,7 +67,7 @@ export default {
     }
 
     if (decide(request.headers.get("Accept")) === "html") {
-      return withVaryAccept(await fetch(request));
+      return htmlFromOrigin(request);
     }
     if (isPlainTextPath(url.pathname)) {
       const res = await fetch(originRequest(request, url));
@@ -74,7 +91,7 @@ export default {
       const missing = markdownNotFound();
       return markdownResponse(missing.status, missing.body);
     }
-    const converted = fromHtml(await htmlRes.text());
+    const converted = fromHtml(stripHarvestableContact(await htmlRes.text()));
     return markdownResponse(converted.status, converted.body);
   },
 };

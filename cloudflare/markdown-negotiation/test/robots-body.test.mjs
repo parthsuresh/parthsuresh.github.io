@@ -1,6 +1,16 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { RESEARCHER_ROBOTS, isRobotsPath, robotsResponse } from "../src/robots-body.js";
+import { stripHarvestableContact } from "../src/strip-contact.js";
+
+describe("stripHarvestableContact", () => {
+  it("removes obfuscated mailto handlers from HTML", () => {
+    const html = 'window.open("mailto:%70%61%72%74%68%73%75%72%65%73%68.%77%6F%72%6B@%67%6D%61%69%6C.%63%6F%6D", "_blank");';
+    const rewritten = stripHarvestableContact(html);
+    assert.equal(rewritten.includes("mailto:"), false);
+    assert.equal(rewritten.includes("@"), false);
+  });
+});
 
 describe("researcher robots body", () => {
   it("allows frontier lab crawlers and blocks bulk scrapers", () => {
