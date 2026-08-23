@@ -72,7 +72,9 @@ layout: default
           {% if site.protect_email and site.plugins contains 'al_email_protect' and site.data.contact.email %}
             {% assign email_local = site.data.contact.email | split: '@' | first %}
             {% assign email_domain = site.data.contact.email | split: '@' | last %}
-            <a href="#" class="al-email-protect" title="Email" data-eu="{{ email_local }}" data-ed="{{ email_domain }}"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#" class="al-email-protect" title="Email" data-eu="{{ email_local }}" data-ed="{{ email_domain }}"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
           {% endif %}
         </div>
 

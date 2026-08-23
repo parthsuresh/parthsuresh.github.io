@@ -23,12 +23,14 @@ for required in "${index_html}" "${robots_txt}" "${llms_txt}" "${index_md}"; do
   fi
 done
 
-if grep -R -F -- "parthsuresh.work@gmail.com" "${site_dir}" >/dev/null; then
+if find "${site_dir}" -type f \( -name '*.html' -o -name '*.xml' -o -name '*.txt' -o -name '*.md' -o -name '*.json' \) \
+  -print0 | xargs -0 grep -F -- "parthsuresh.work@gmail.com" >/dev/null; then
   echo "harvestable email address leaked into the built site" >&2
   exit 1
 fi
 
-if grep -R -E -- "mailto:[^\"']*parthsuresh" "${site_dir}" >/dev/null; then
+if find "${site_dir}" -type f \( -name '*.html' -o -name '*.xml' -o -name '*.txt' -o -name '*.md' -o -name '*.json' \) \
+  -print0 | xargs -0 grep -E -- "mailto:[^\"']*parthsuresh" >/dev/null; then
   echo "harvestable mailto: link leaked into the built site" >&2
   exit 1
 fi
@@ -93,6 +95,11 @@ fi
 
 if ! grep -q '^# Parth Suresh' "${llms_txt}"; then
   echo "llms.txt must start with the site H1" >&2
+  exit 1
+fi
+
+if ! grep -q '^# Parth Suresh' "${index_md}"; then
+  echo "index.md must be raw markdown, not HTML" >&2
   exit 1
 fi
 
