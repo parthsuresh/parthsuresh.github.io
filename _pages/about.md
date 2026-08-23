@@ -1,6 +1,6 @@
 ---
 layout: about
-title: Member of Technical Staff at Datology AI
+title: about
 permalink: /
 subtitle: Member of Technical Staff · Datology AI
 description: Parth Suresh is a Member of Technical Staff at Datology AI, working on synthetic data generation for web-scale and long-context models.
