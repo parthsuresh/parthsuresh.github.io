@@ -1,8 +1,4 @@
----
-layout: null
-permalink: /robots.txt
----
-# Researcher indexing policy:
+export const RESEARCHER_ROBOTS = `# Researcher indexing policy:
 # allow frontier training, AI-search, and on-demand fetch crawlers.
 # Keep bulk scrapers that do not identify a lab out.
 
@@ -49,4 +45,20 @@ User-agent: *
 Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
-Sitemap: {{ site.baseurl | prepend: site.url }}/sitemap.xml
+Sitemap: https://parthsuresh.com/sitemap.xml
+`;
+
+export function isRobotsPath(pathname) {
+  return pathname === "/robots.txt";
+}
+
+export function robotsResponse() {
+  return {
+    status: 200,
+    headers: {
+      "content-type": "text/plain; charset=utf-8",
+      "cache-control": "public, max-age=300",
+    },
+    body: RESEARCHER_ROBOTS,
+  };
+}

@@ -1,0 +1,30 @@
+name: Deploy markdown negotiation worker
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "cloudflare/markdown-negotiation/**"
+      - ".github/workflows/deploy-markdown-worker.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: cloudflare/markdown-negotiation
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: cloudflare/markdown-negotiation
+          command: deploy

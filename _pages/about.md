@@ -28,6 +28,9 @@ latest_posts:
   .social .contact-icons {
     font-size: 2rem;
   }
+  .social .contact-icons .al-email-protect {
+    text-decoration: none;
+  }
   /* Match al-folio self-author underline (same as Anshuman); keep name on one line */
   .publications ol.bibliography li .author > em {
     border-bottom: 1px solid;
