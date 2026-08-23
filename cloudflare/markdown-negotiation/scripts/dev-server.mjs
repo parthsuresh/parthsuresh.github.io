@@ -4,8 +4,9 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const { decide, fromHtml, isPlainTextPath, markdownHeaders, markdownNotFound, siblingPath } =
-  await import(pathToFileURL(path.join(here, "../src/negotiate.js")).href);
+const { decide, fromHtml, isPlainTextPath, markdownHeaders, markdownNotFound, siblingPath } = await import(
+  pathToFileURL(path.join(here, "../src/negotiate.js")).href
+);
 
 function contentTypeFor(filePath) {
   if (filePath.endsWith(".html")) {

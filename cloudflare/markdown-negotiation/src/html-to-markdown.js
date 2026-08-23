@@ -15,7 +15,7 @@ function strip(html) {
       .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
       .replace(/<nav\b[^>]*>[\s\S]*?<\/nav>/gi, "")
       .replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi, "")
-      .replace(/<header\b[^>]*>[\s\S]*?<\/header>/gi, ""),
+      .replace(/<header\b[^>]*>[\s\S]*?<\/header>/gi, "")
   );
 }
 
@@ -45,7 +45,10 @@ function convertFragment(html) {
   text = text.replace(/<br\s*\/?>/gi, "\n");
   text = text.replace(/<[^>]+>/g, " ");
   text = decodeEntities(text);
-  text = text.replace(/[ \t]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+  text = text
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
   return text;
 }
 
