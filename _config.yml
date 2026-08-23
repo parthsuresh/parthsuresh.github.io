@@ -247,6 +247,7 @@ exclude:
   - README.md
   - readme_preview/
   - test/
+  - cloudflare/
   - gems/
   - migrations/
   - vendor

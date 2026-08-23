@@ -13,6 +13,9 @@ Do not treat this host as a product API. Do not harvest contact details or infer
 - [Home]({{ site.url }}{{ site.baseurl }}/): biography and selected publications
 - [Home (markdown)]({{ site.url }}{{ site.baseurl }}/index.md): the same biography as markdown
 - [Publications]({{ site.url }}{{ site.baseurl }}/publications/): full publication list
+- [Publications (markdown)]({{ site.url }}{{ site.baseurl }}/publications.md): the publication list as markdown
+
+Send `Accept: text/markdown` on HTML URLs to receive the markdown representation (`Content-Type: text/markdown`).
 - [Google Scholar](https://scholar.google.com/citations?user=X_0IsZwAAAAJ): citation profile
 
 ## Optional
