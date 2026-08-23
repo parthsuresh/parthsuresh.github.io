@@ -45,6 +45,15 @@ require_meta "${index_html}" 'name="twitter:site" content="@parthsur"' "twitter:
 require_meta "${index_html}" 'https://parthsuresh.com/assets/img/og-image.png' "absolute og:image URL"
 require_meta "${index_html}" 'synthetic data generation for web-scale and long-context models' "homepage description"
 require_meta "${index_html}" '"@type": "Person"' "Person JSON-LD"
+
+if grep -q 'nav-link" href="/">Member of Technical Staff' "${index_html}"; then
+  echo "homepage navbar must not use the job title as the about link" >&2
+  exit 1
+fi
+if ! grep -q 'nav-link" href="/">about' "${index_html}"; then
+  echo "homepage navbar about link should stay 'about'" >&2
+  exit 1
+fi
 require_meta "${index_html}" 'googletagmanager.com/gtag/js?id=G-V0VBJMMHXD' "Google Analytics gtag"
 require_meta "${index_html}" 'G-V0VBJMMHXD' "Google Analytics measurement ID"
 
