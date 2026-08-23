@@ -118,18 +118,35 @@ if ! grep -q '"@type": "Person"' "${index_html}"; then
   exit 1
 fi
 
-if ! awk '
-  BEGIN { in_script = 0; found_person = 0 }
-  $0 ~ /<script type="application\/ld\+json">/ { in_script = 1; block = "" }
-  in_script { block = block $0 }
-  in_script && $0 ~ /<\/script>/ {
-    in_script = 0
-    if (block ~ /"@type": "Person"/ && block ~ /"name": "Parth Suresh"/ && block ~ /"jobTitle"/ && block ~ /sameAs/ && block !~ /telephone/ && block !~ /email/) {
-      found_person = 1
-    }
-  }
-  END { exit found_person ? 0 : 1 }
-' "${index_html}"; then
+if ! python3 - "${index_html}" <<'PY'
+import json
+import re
+import sys
+from pathlib import Path
+
+html = Path(sys.argv[1]).read_text(encoding="utf-8")
+found = False
+for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, flags=re.I | re.S):
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        data = json.loads(raw, strict=False)
+    if data.get("@type") != "Person":
+        continue
+    same_as = data.get("sameAs") or []
+    if (
+        data.get("name") == "Parth Suresh"
+        and data.get("jobTitle")
+        and same_as
+        and "email" not in data
+        and "telephone" not in data
+        and "contactPoint" not in data
+    ):
+        found = True
+if not found:
+    raise SystemExit(1)
+PY
+then
   echo "homepage Person JSON-LD must include name, jobTitle, and sameAs without email or telephone" >&2
   exit 1
 fi

@@ -5,9 +5,7 @@
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Parth
 last_name: Suresh
-description: >
-  Parth Suresh, Member of Technical Staff at Datology AI.
-  Works on synthetic data generation for web and long-context data.
+description: Parth Suresh, Member of Technical Staff at Datology AI. Works on synthetic data generation for web and long-context data.
 footer_text:
 keywords: machine learning, synthetic data, long context, software engineering, research
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
