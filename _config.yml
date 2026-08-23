@@ -324,7 +324,10 @@ jekyll-minifier:
   # breaking every spacing/positioning utility (e.g. .fixed-top -> broken navbar). Disable it.
   compress_css: false
   # JS minification is delegated to jekyll-terser (compress_javascript above is false).
-  exclude: ["robots.txt", "llms.txt"]
+  # Markdown siblings are emitted from .html sources so Kramdown does not render
+  # them. jekyll-minifier still treats those pages as HTML and collapses newlines
+  # in production, so keep the published .md files out of the minifier.
+  exclude: ["robots.txt", "llms.txt", "index.md", "publications.md", "news.md", "404.md"]
 
 # -----------------------------------------------------------------------------
 # Terser
