@@ -1,0 +1,2 @@
+# Kept out of socials.yml so {% social_links %} cannot emit a harvestable mailto:.
+email: parthsuresh.work@gmail.com
