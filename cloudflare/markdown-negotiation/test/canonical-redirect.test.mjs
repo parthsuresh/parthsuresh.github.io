@@ -56,7 +56,18 @@ describe("canonicalRedirectLocation", () => {
   });
 
   it("does not redirect the homepage, assets, or discovery files", () => {
-    for (const path of ["/", "/index.html", "/sitemap.xml", "/robots.txt", "/llms.txt", "/assets/css/main.css", "/blog"]) {
+    for (const path of [
+      "/",
+      "/index.html",
+      "/sitemap.xml",
+      "/robots.txt",
+      "/llms.txt",
+      "/auth.md",
+      "/openapi.json",
+      "/.well-known/api-catalog",
+      "/assets/css/main.css",
+      "/blog",
+    ]) {
       assert.equal(canonicalRedirectLocation(pageUrl(path)), null, path);
     }
   });

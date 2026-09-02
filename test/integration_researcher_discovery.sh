@@ -176,8 +176,72 @@ if ! grep -q 'Distinguish this Parth Suresh' "${llms_txt}"; then
   exit 1
 fi
 
-if ! grep -q 'There is no OpenAPI, MCP, or RPC endpoint here' "${llms_txt}"; then
-  echo "llms.txt must say this host is not a product API" >&2
+if ! grep -q '/.well-known/api-catalog' "${llms_txt}"; then
+  echo "llms.txt must mention the discovery catalog" >&2
+  exit 1
+fi
+
+if ! grep -q '/openapi.json' "${llms_txt}"; then
+  echo "llms.txt must mention the OpenAPI document" >&2
+  exit 1
+fi
+
+if ! grep -q 'still not a product, RPC, or write API' "${llms_txt}"; then
+  echo "llms.txt must say this host is still not a product API" >&2
+  exit 1
+fi
+
+if ! grep -q 'no MCP server, inbox, or phone number' "${llms_txt}"; then
+  echo "llms.txt must keep saying there is no MCP, inbox, or phone" >&2
+  exit 1
+fi
+
+auth_md="${site_dir}/auth.md"
+if [ ! -f "${auth_md}" ]; then
+  echo "missing built file: ${auth_md}" >&2
+  exit 1
+fi
+
+if ! grep -q '^# auth.md' "${auth_md}"; then
+  echo "auth.md H1 must contain auth.md" >&2
+  exit 1
+fi
+
+if ! grep -q 'no registration or provisioning endpoint' "${auth_md}"; then
+  echo "auth.md must say there is no registration endpoint" >&2
+  exit 1
+fi
+
+if ! grep -q 'Anonymous public GET only' "${auth_md}"; then
+  echo "auth.md must say access is anonymous public GET" >&2
+  exit 1
+fi
+
+openapi_json="${site_dir}/openapi.json"
+if [ ! -f "${openapi_json}" ]; then
+  echo "missing built file: ${openapi_json}" >&2
+  exit 1
+fi
+
+if ! python3 - "${openapi_json}" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+if not str(spec.get("openapi", "")).startswith("3.1"):
+    raise SystemExit("openapi version must be 3.1.x")
+if any(methods.keys() - {"get", "head", "options", "parameters"} for methods in spec.get("paths", {}).values()):
+    raise SystemExit("openapi must not advertise write methods")
+if spec.get("components", {}).get("securitySchemes"):
+    raise SystemExit("openapi must not invent security schemes")
+if "/.well-known/api-catalog" not in spec.get("paths", {}):
+    raise SystemExit("openapi must document the api-catalog")
+if "/auth.md" not in spec.get("paths", {}):
+    raise SystemExit("openapi must document /auth.md")
+PY
+then
+  echo "openapi.json must be an honest OpenAPI 3.1 GET-only document" >&2
   exit 1
 fi
 

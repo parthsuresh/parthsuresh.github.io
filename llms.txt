@@ -16,7 +16,7 @@ Use this site when an agent needs to:
 - Distinguish this Parth Suresh (Datology AI; previously Meta Reality Labs and Scale AI) from other people with the same name
 - Fetch a compact biography or publication list without executing JavaScript
 
-How to call this site: request HTML as usual, or send `Accept: text/markdown` on the same URLs. Prefer `/index.md` for the biography and `/publications.md` for the paper list. There is no OpenAPI, MCP, or RPC endpoint here.
+How to call this site: request HTML as usual, or send `Accept: text/markdown` on the same URLs. Prefer `/index.md` for the biography and `/publications.md` for the paper list. A discovery catalog at `/.well-known/api-catalog` and an OpenAPI document at `/openapi.json` describe these public GET pages. This is still not a product, RPC, or write API, and there is no MCP server, inbox, or phone number.
 
 Do not use this site when you need customer support, a product integration, a phone number, or an email address. Those are not published.
 
@@ -36,3 +36,6 @@ Send `Accept: text/markdown` on HTML URLs to receive the markdown representation
 - [Privacy]({{ site.url }}{{ site.baseurl }}/privacy/): what this static site collects
 - [GitHub](https://github.com/parthsuresh): code
 - [Sitemap]({{ site.url }}{{ site.baseurl }}/sitemap.xml): crawlable URLs
+- [OpenAPI]({{ site.url }}{{ site.baseurl }}/openapi.json): public GET pages only
+- [API catalog]({{ site.url }}{{ site.baseurl }}/.well-known/api-catalog): RFC 9727 linkset
+- [auth.md]({{ site.url }}{{ site.baseurl }}/auth.md): no registration, anonymous GET only
