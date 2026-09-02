@@ -1,3 +1,4 @@
+import { canonicalRedirectLocation } from "./canonical-redirect.js";
 import { decide, fromHtml, isPlainTextPath, markdownHeaders, markdownNotFound, siblingPath } from "./negotiate.js";
 import { isRobotsPath, robotsResponse } from "./robots-body.js";
 import { stripHarvestableContact } from "./strip-contact.js";
@@ -64,6 +65,11 @@ export default {
         status: robots.status,
         headers: robots.headers,
       });
+    }
+
+    const canonical = canonicalRedirectLocation(url);
+    if (canonical) {
+      return Response.redirect(canonical, 301);
     }
 
     if (decide(request.headers.get("Accept")) === "html") {
