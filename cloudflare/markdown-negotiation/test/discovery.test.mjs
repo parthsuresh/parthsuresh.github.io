@@ -180,7 +180,7 @@ describe("discovery worker", () => {
     assert.match(heading, /auth\.md/i);
   });
 
-  it("passes origin 301s through for HTML page aliases", async () => {
+  it("keeps canonical 301s for HTML page aliases", async () => {
     const about = await worker.fetch(new Request("https://parthsuresh.com/about"));
     const newsHtml = await worker.fetch(new Request("https://parthsuresh.com/news.html"));
     assert.equal(about.status, 301);
