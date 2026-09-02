@@ -24,7 +24,7 @@ node --test "${repo_root}/cloudflare/markdown-negotiation/test/"*.test.mjs
 site_dir="${tmp_dir}/_site"
 JEKYLL_ENV=production bundle exec jekyll build -d "${site_dir}" >/dev/null
 
-for required in "${site_dir}/index.md" "${site_dir}/publications.md" "${site_dir}/news.md" "${site_dir}/about.md" "${site_dir}/contact.md" "${site_dir}/privacy.md" "${site_dir}/404.md"; do
+for required in "${site_dir}/index.md" "${site_dir}/publications.md" "${site_dir}/news.md" "${site_dir}/about.md" "${site_dir}/contact.md" "${site_dir}/privacy.md" "${site_dir}/404.md" "${site_dir}/auth.md" "${site_dir}/openapi.json"; do
   if [ ! -f "${required}" ]; then
     echo "missing markdown sibling: ${required}" >&2
     exit 1
