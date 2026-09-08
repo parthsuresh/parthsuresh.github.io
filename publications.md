@@ -13,7 +13,7 @@ Publications in reverse chronological order.
 
 ## 2024
 
-- **Balancing Cost and Effectiveness of Synthetic Data Generation Strategies for LLMs**. Chan, Yung-Chieh, Pu, George, Shanker, Apaar, Suresh, Parth, Jenks, Penn, Heyer, John, Denton, Sam. *Fine-Tuning in Machine Learning (FITML) Workshop at NeurIPS 2024*. [PDF](https://arxiv.org/abs/2409.19759).
+- **Balancing Cost and Effectiveness of Synthetic Data Generation Strategies for LLMs**. Chan, Yung-Chieh, Pu, George, Shanker, Apaar, Suresh, Parth, Jenks, Penn, Heyer, John, Denton, Sam. *Fine-Tuning in Machine Learning (FITML) Workshop at NeurIPS*. [PDF](https://arxiv.org/abs/2409.19759).
 
 ## 2023
 
@@ -25,4 +25,4 @@ Publications in reverse chronological order.
 
 ## 2018
 
-- **Subband Weighting for Binaural Speech Source Localization**. Karthik Girija Ramesan, Suresh, Parth, Prasanta Kumar Ghosh. *Interspeech 2018*. [PDF](https://www.isca-archive.org/interspeech_2018/girijaramesan18_interspeech.pdf).
+- **Subband Weighting for Binaural Speech Source Localization**. Karthik Girija Ramesan, Suresh, Parth, Prasanta Kumar Ghosh. *Interspeech*. [PDF](https://www.isca-archive.org/interspeech_2018/girijaramesan18_interspeech.pdf).
