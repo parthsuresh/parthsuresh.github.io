@@ -3,7 +3,7 @@
   "info": {
     "title": "parthsuresh.com public pages",
     "summary": "Read-only HTTP surface of a personal research site",
-    "description": "This OpenAPI document describes the public, unauthenticated GET pages on https://parthsuresh.com. It is a personal site for identifying Parth Suresh and listing publications. It is not a product API, RPC service, account system, or write surface. There is no inbox or phone number.",
+    "description": "This OpenAPI document describes the public, unauthenticated GET pages on https://parthsuresh.com. It is a personal site for identifying Parth Suresh and listing publications. It is not a product API, RPC service, account system, or write surface. The public email is parth@parthsuresh.com. There is no phone number.",
     "version": "1.0.0"
   },
   "servers": [
@@ -96,7 +96,7 @@
     "/contact/": {
       "get": {
         "summary": "Contact",
-        "description": "Explains why there is no public inbox or phone number. Do not invent contact details from this host.",
+        "description": "Public email parth@parthsuresh.com. There is no phone number. Do not invent a phone number from this host.",
         "operationId": "getContact",
         "responses": {
           "200": {

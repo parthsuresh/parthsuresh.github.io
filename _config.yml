@@ -5,6 +5,7 @@
 title: blank # the website title (if blank, full name will be used instead)
 first_name: Parth
 last_name: Suresh
+email: parth@parthsuresh.com # public contact; Cloudflare Email Routing (receive/forward only)
 description: >
   Parth Suresh is a Member of Technical Staff at Datology AI
   working on synthetic data generation for web-scale and long-context models.

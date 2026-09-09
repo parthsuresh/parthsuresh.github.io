@@ -10,6 +10,19 @@ describe("stripHarvestableContact", () => {
     assert.equal(rewritten.includes("mailto:"), false);
     assert.equal(rewritten.includes("@"), false);
   });
+
+  it("keeps the published public address", () => {
+    const html = '<a href="mailto:parth@parthsuresh.com">email</a>';
+    assert.equal(stripHarvestableContact(html), html);
+  });
+
+  it("keeps a percent-encoded public address and still strips other mailtos", () => {
+    const html = '<a href="mailto:%70%61%72%74%68@parthsuresh.com">ok</a><a href="mailto:other@example.com">no</a>';
+    const rewritten = stripHarvestableContact(html);
+    assert.match(rewritten, /mailto:%70%61%72%74%68@parthsuresh\.com/);
+    assert.doesNotMatch(rewritten, /mailto:other@example\.com/);
+    assert.match(rewritten, /href="#"/);
+  });
 });
 
 describe("researcher robots body", () => {
