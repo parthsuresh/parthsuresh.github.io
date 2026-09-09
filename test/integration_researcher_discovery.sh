@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Origin-side checks for researcher indexing without a harvestable inbox.
+# Origin-side checks for researcher indexing. Public email is published;
+# Gmail, mailto:, and phone stay out of the built site.
 set -euo pipefail
 
 tmp_dir="$(mktemp -d)"
@@ -109,7 +110,17 @@ if ! grep -q '/publications/' "${llms_txt}"; then
 fi
 
 if grep -qiE 'parthsuresh\.work@gmail\.com|@[0-9]{7,}' "${llms_txt}" "${index_md}"; then
-  echo "machine-readable researcher files must not include email or phone" >&2
+  echo "machine-readable researcher files must not include Gmail or a phone number" >&2
+  exit 1
+fi
+
+if ! grep -q 'parth@parthsuresh.com' "${llms_txt}"; then
+  echo "llms.txt must publish the public email" >&2
+  exit 1
+fi
+
+if grep -F 'parth@parthsuresh.com' "${index_html}"; then
+  echo "homepage HTML must not contain the contiguous public address (protect_email)" >&2
   exit 1
 fi
 
@@ -191,8 +202,8 @@ if ! grep -q 'still not a product, RPC, or write API' "${llms_txt}"; then
   exit 1
 fi
 
-if ! grep -q 'no MCP server, inbox, or phone number' "${llms_txt}"; then
-  echo "llms.txt must keep saying there is no MCP, inbox, or phone" >&2
+if ! grep -q 'no MCP server or phone number' "${llms_txt}"; then
+  echo "llms.txt must keep saying there is no MCP or phone" >&2
   exit 1
 fi
 
@@ -214,6 +225,11 @@ fi
 
 if ! grep -q 'Anonymous public GET only' "${auth_md}"; then
   echo "auth.md must say access is anonymous public GET" >&2
+  exit 1
+fi
+
+if ! grep -q 'parth@parthsuresh.com' "${auth_md}"; then
+  echo "auth.md must publish the public email" >&2
   exit 1
 fi
 
@@ -239,6 +255,12 @@ if "/.well-known/api-catalog" not in spec.get("paths", {}):
     raise SystemExit("openapi must document the api-catalog")
 if "/auth.md" not in spec.get("paths", {}):
     raise SystemExit("openapi must document /auth.md")
+info = spec.get("info") or {}
+if "parth@parthsuresh.com" not in str(info.get("description", "")):
+    raise SystemExit("openapi info must publish the public email")
+contact = (spec.get("paths") or {}).get("/contact/", {}).get("get", {})
+if "parth@parthsuresh.com" not in str(contact.get("description", "")):
+    raise SystemExit("openapi /contact/ must publish the public email")
 PY
 then
   echo "openapi.json must be an honest OpenAPI 3.1 GET-only document" >&2
@@ -285,13 +307,18 @@ if ! grep -qx '# Privacy' "${site_dir}/privacy.md"; then
   exit 1
 fi
 
-if ! grep -q 'no public email address' "${site_dir}/contact/index.html"; then
-  echo "contact page must say there is no public inbox" >&2
+if ! grep -q 'parth@parthsuresh.com' "${site_dir}/contact/index.html"; then
+  echo "contact page must publish the public email" >&2
+  exit 1
+fi
+
+if ! grep -q 'parth@parthsuresh.com' "${site_dir}/contact.md"; then
+  echo "contact.md sibling must publish the public email" >&2
   exit 1
 fi
 
 if grep -qiE 'parthsuresh\.work@gmail\.com|mailto:|telephone' "${site_dir}/contact/index.html" "${site_dir}/privacy/index.html" "${site_dir}/about/index.html"; then
-  echo "trust pages must not publish email, mailto, or telephone" >&2
+  echo "trust pages must not publish Gmail, mailto, or telephone" >&2
   exit 1
 fi
 

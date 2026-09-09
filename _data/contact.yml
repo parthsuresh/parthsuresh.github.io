@@ -1,2 +1,3 @@
 # Kept out of socials.yml so {% social_links %} cannot emit a harvestable mailto:.
-email: parthsuresh.work@gmail.com
+# Homepage envelope uses al_email_protect (split data-eu/data-ed). This is the public address.
+email: parth@parthsuresh.com

@@ -20,7 +20,7 @@ None. Anonymous public GET only.
 
 ## Credentials
 
-Do not send bearer tokens, API keys, or cookies. This site does not issue credentials and does not accept them. Do not harvest contact details; there is no public inbox or phone number.
+Do not send bearer tokens, API keys, or cookies. This site does not issue credentials and does not accept them. The public email is parth@parthsuresh.com. There is no phone number.
 
 ## Where to read instead
 
