@@ -15,5 +15,7 @@ function mailtoAddress(value) {
 }
 
 export function stripHarvestableContact(html) {
-  return html.replace(/mailto:[^"'\\s)]+/gi, (match) => (mailtoAddress(match) === PUBLIC_EMAIL ? match : "#"));
+  // Stop at quotes, whitespace, or ")" so window.open("mailto:...") handlers
+  // are a single match. Use \s (whitespace), not a literal "s".
+  return html.replace(/mailto:[^"'\s)]+/gi, (match) => (mailtoAddress(match) === PUBLIC_EMAIL ? match : "#"));
 }
