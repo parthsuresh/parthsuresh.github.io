@@ -3,7 +3,6 @@ import { applyHomepageLinkHeaders, apiCatalogResponse, isApiCatalogPath, isMarkd
 import { iconRedirectLocation } from "./icon-redirect.js";
 import { legacyPathRedirectLocation } from "./legacy-path-redirect.js";
 import { decide, fromHtml, isPlainTextPath, markdownHeaders, markdownNotFound, siblingPath } from "./negotiate.js";
-
 import { isRobotsPath, robotsResponse } from "./robots-body.js";
 import { stripHarvestableContact } from "./strip-contact.js";
 
