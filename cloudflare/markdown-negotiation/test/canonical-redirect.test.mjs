@@ -67,6 +67,9 @@ describe("canonicalRedirectLocation", () => {
       "/.well-known/api-catalog",
       "/assets/css/main.css",
       "/blog",
+      "/favicon.ico",
+      "/apple-touch-icon.png",
+      "/apple-touch-icon-precomposed.png",
     ]) {
       assert.equal(canonicalRedirectLocation(pageUrl(path)), null, path);
     }

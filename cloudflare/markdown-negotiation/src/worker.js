@@ -1,5 +1,6 @@
 import { canonicalRedirectLocation } from "./canonical-redirect.js";
 import { applyHomepageLinkHeaders, apiCatalogResponse, isApiCatalogPath, isMarkdownDocumentPath, isOpenApiPath } from "./discovery.js";
+import { iconRedirectLocation } from "./icon-redirect.js";
 import { decide, fromHtml, isPlainTextPath, markdownHeaders, markdownNotFound, siblingPath } from "./negotiate.js";
 import { isRobotsPath, robotsResponse } from "./robots-body.js";
 import { stripHarvestableContact } from "./strip-contact.js";
@@ -95,6 +96,11 @@ export default {
 
     if (isApiCatalogPath(url.pathname)) {
       return apiCatalogResponse(request.method);
+    }
+
+    const icon = iconRedirectLocation(url);
+    if (icon) {
+      return Response.redirect(icon, 301);
     }
 
     const canonical = canonicalRedirectLocation(url);
