@@ -4,8 +4,15 @@ const ICON_REDIRECTS = {
   "/apple-touch-icon-precomposed.png": "/assets/img/apple-touch-icon.png",
 };
 
+const SIZED_APPLE_TOUCH_ICON_RE = /^\/apple-touch-icon-\d+x\d+(?:-precomposed)?\.png$/;
+const APPLE_TOUCH_ICON_ASSET = "/assets/img/apple-touch-icon.png";
+
+function iconTargetPath(pathname) {
+  return ICON_REDIRECTS[pathname] || (SIZED_APPLE_TOUCH_ICON_RE.test(pathname) ? APPLE_TOUCH_ICON_ASSET : null);
+}
+
 export function iconRedirectLocation(url) {
-  const targetPath = ICON_REDIRECTS[url.pathname];
+  const targetPath = iconTargetPath(url.pathname);
   if (!targetPath) {
     return null;
   }
