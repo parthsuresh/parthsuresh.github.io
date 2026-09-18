@@ -63,6 +63,8 @@ describe("legacyPathRedirectLocation", () => {
       "/favicon.ico",
       "/apple-touch-icon.png",
       "/apple-touch-icon-precomposed.png",
+      "/apple-touch-icon-180x180.png",
+      "/apple-touch-icon-60x60.png",
       "/assets/img/favicon.png",
       "/robots.txt",
       "/llms.txt",
@@ -134,6 +136,12 @@ describe("legacy redirects leave existing worker routes intact", () => {
     const response = await worker.fetch(request("/favicon.ico"));
     assert.equal(response.status, 301);
     assert.equal(response.headers.get("location"), `${ORIGIN}/assets/img/favicon.png`);
+  });
+
+  it("still 301s sized apple-touch-icon probes", async () => {
+    const response = await worker.fetch(request("/apple-touch-icon-180x180.png"));
+    assert.equal(response.status, 301);
+    assert.equal(response.headers.get("location"), `${ORIGIN}/assets/img/apple-touch-icon.png`);
   });
 
   it("still 301s trailing-slash canonicals", async () => {

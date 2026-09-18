@@ -70,6 +70,8 @@ describe("canonicalRedirectLocation", () => {
       "/favicon.ico",
       "/apple-touch-icon.png",
       "/apple-touch-icon-precomposed.png",
+      "/apple-touch-icon-180x180.png",
+      "/apple-touch-icon-60x60.png",
     ]) {
       assert.equal(canonicalRedirectLocation(pageUrl(path)), null, path);
     }
