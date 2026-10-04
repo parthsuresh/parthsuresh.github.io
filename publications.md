@@ -19,9 +19,9 @@ Publications in reverse chronological order.
 
 - **Modeling the Centrality of Developer Output with Software Supply Chains**. Mockus, Audris, Rigby, Peter C., Abreu, Rui, Suresh, Parth, Chen, Yifen, Nagappan, Nachiappan. *Proceedings of the 31st ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering*. [PDF](https://users.encs.concordia.ca/~pcr/paper/Mockus2023FSE-industry-preprint.pdf).
 
-## 2021
+## 2020
 
-- **Accurate brain age prediction using recurrent slice-based networks**. Lam, Pradeep K., Santhalingam, Vigneshwaran, Suresh, Parth, Baboota, Rahul, Zhu, Alyssa H., Thomopoulos, Sophia I., Jahanshad, Neda, Thompson, Paul M.. *17th International Symposium on Medical Information Processing and Analysis*. [PDF](https://doi.org/10.1117/12.2579630).
+- **Accurate brain age prediction using recurrent slice-based networks**. Lam, Pradeep K., Santhalingam, Vigneshwaran, Suresh, Parth, Baboota, Rahul, Zhu, Alyssa H., Thomopoulos, Sophia I., Jahanshad, Neda, Thompson, Paul M.. *16th International Symposium on Medical Information Processing and Analysis*. [PDF](https://doi.org/10.1117/12.2579630).
 
 ## 2018
 
