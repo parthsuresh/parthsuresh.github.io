@@ -18,7 +18,7 @@ Four pull requests, each from latest `main`, none of them draft.
 
 1. This plan, under `docs/agent-friendly-plan.md`.
 2. Content checks. `bin/check_site_content.rb` reads the files the site already renders. `_data/experience.yml` records role facts that must appear in the about-page prose. Tests feed the pre-fix venue bib and the pre-fix em-dash news and require a failure. The current tree must pass. A workflow runs the checker on pull requests.
-3. Build and link CI. A workflow that is not limited to the template repo runs `npm run lint:style-contract`, a production `jekyll build`, and offline lychee on `_site` HTML. That catches a broken build, a starter-owned `_layouts` or `_sass` path, and a broken local link before merge.
+3. Build and link CI. A workflow that is not limited to the template repo runs a production `jekyll build`, then `bin/check_local_links.rb` on `_site`. That catches a broken build and a root-relative link such as `/publications/` whose file is missing. Lychee `--offline` skips those URLs and exits 0, so it is not the check. `npm run lint:style-contract` stays off this workflow because `_layouts/about.liquid` and `_sass/_themes.scss` are already committed overrides and the template lint fails on them.
 4. `AGENTS.md` plus `.cursor/skills/verify-parthsuresh/`. The doc tells the truth about `baseurl` and which collections publish, and pairs each rule with the check that enforces it. The skill launches the site and drives one page.
 
 ## Checks, and the mistake each one guards
@@ -34,7 +34,8 @@ Four pull requests, each from latest `main`, none of them draft.
 | Author includes `Suresh, Parth`, and `pdf` is set                                                   | An imported entry that is not his, or a paper with no link                                                                                                     |
 | Exactly one current role in `_data/experience.yml`, and each role string appears in the about prose | A LinkedIn sync that updates only one of the two places                                                                                                        |
 | `baseurl` empty, demo dirs still excluded, `_news/` not excluded                                    | Following the stale `AGENTS.md` and shipping `/al-folio` links or the demo blog                                                                                |
-| Style contract, production build, offline lychee                                                    | A path the starter must not own, a red build, a broken local link that today is caught only after deploy                                                       |
+| Theme overrides are only `_layouts/about.liquid` and `_sass/_themes.scss`                           | A new layout, include, Sass, or Tailwind file. The template style contract fails on the two overrides that already exist                                       |
+| Production build, then `bin/check_local_links.rb`                                                   | A red build, or a broken local link that today is caught only after deploy                                                                                     |
 
 The checker error names the file and the edit to make.
 
@@ -61,8 +62,6 @@ bundle exec ruby bin/check_site_content.rb
 After the CI PR, the same production build the workflow uses:
 
 ```bash
-npm run lint:style-contract
 JEKYLL_ENV=production bundle exec jekyll build
+bundle exec ruby bin/check_local_links.rb _site
 ```
-
-Local links are what lychee checks with `--offline` on `_site/**/*.html`.
