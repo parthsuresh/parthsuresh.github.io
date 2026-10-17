@@ -2,8 +2,8 @@
 layout: about
 title: about
 permalink: /
-subtitle: Member of Technical Staff · Datology AI
-description: Parth Suresh is a Member of Technical Staff at Datology AI, working on synthetic data generation for web-scale and long-context models.
+subtitle: Member of Technical Staff (Research) · Datology AI
+description: Parth Suresh is a Member of Technical Staff (Research) at Datology AI, working on synthetic data generation for web-scale and long-context models.
 
 profile:
   align: right
@@ -52,7 +52,7 @@ latest_posts:
   }
 </style>
 
-I'm a Member of Technical Staff at [Datology AI](https://www.datologyai.com/), where I work on synthetic data generation for web-scale and long-context data.
+I'm a Member of Technical Staff (Research) at [Datology AI](https://www.datologyai.com/), where I work on synthetic data generation for web-scale and long-context data.
 
 Previously, I was a Software Engineer (Machine Learning) at Meta Reality Labs, working on synthetic data, data curation, and benchmarks for language and multimodal models, including in egocentric and wearable settings. Before that I was an ML Research Engineer at Scale AI, focused on reasoning, synthetic data generation, and LLM judges. Earlier at Meta I worked at the intersection of developer productivity, software engineering, and machine learning.
 

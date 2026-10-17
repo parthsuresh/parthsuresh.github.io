@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Joined [Datology AI](https://www.datologyai.com/) as a Member of Technical Staff, working on synthetic data generation for web and long-context data.
+Joined [Datology AI](https://www.datologyai.com/) as a Member of Technical Staff (Research), working on synthetic data generation for web and long-context data.
