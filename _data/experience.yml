@@ -1,0 +1,15 @@
+# Role facts that must appear in the about-page prose.
+# The about page stays hand-written. Edit this file and _pages/about.md together.
+roles:
+  - id: datology
+    current: true
+    title: Member of Technical Staff
+    organization: Datology AI
+  - id: meta-reality-labs
+    title: Software Engineer (Machine Learning)
+    organization: Meta Reality Labs
+  - id: scale
+    title: ML Research Engineer
+    organization: Scale AI
+  - id: meta-earlier
+    prose: Earlier at Meta
