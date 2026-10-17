@@ -172,9 +172,8 @@ module SiteContent
 
     meta = YAML.safe_load(match[1], permitted_classes: [Time, Date]) || {}
     body = raw.sub(/\A---\n.*?\n---\n/m, "")
-    prose = body.gsub(/<style\b.*?<\/style>/m, "")
     errors = []
-    if prose.include?(EM_DASH) || prose.include?(EN_DASH)
+    if body.include?(EM_DASH) || body.include?(EN_DASH)
       errors << "#{path} contains an em dash or en dash. Use a hyphen."
     end
     unless meta.is_a?(Hash) && meta["inline"] == true
@@ -184,7 +183,7 @@ module SiteContent
     unless date.is_a?(Time) || date.is_a?(Date)
       errors << "#{path} date must be a timestamp. Got #{date.inspect}."
     end
-    prose.scan(%r{arxiv\.org/abs/(\d{4}\.\d{4,5})}) do |id|
+    body.scan(%r{arxiv\.org/abs/(\d{4}\.\d{4,5})}) do |id|
       next if bib_text.include?(id[0])
 
       errors << "#{path} links arXiv #{id[0]}, which is not in _bibliography/papers.bib. Add the paper or change the link."
@@ -235,8 +234,7 @@ module SiteContent
   end
 
   def about_prose(raw)
-    body = raw.sub(/\A---\n.*?\n---\n/m, "")
-    body.gsub(/<style\b.*?<\/style>/m, "")
+    raw.sub(/\A---\n.*?\n---\n/m, "")
   end
 
   def front_matter(raw)
