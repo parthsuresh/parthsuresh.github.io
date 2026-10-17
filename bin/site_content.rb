@@ -8,6 +8,11 @@ module SiteContent
   EM_DASH = "—"
   EN_DASH = "–"
   DEMO_EXCLUDES = %w[_posts/ _projects/ _books/ _teachings/].freeze
+  ALLOWED_OVERRIDES = {
+    "_layouts" => ["about.liquid"].freeze,
+    "_sass" => ["_themes.scss"].freeze
+  }.freeze
+  FORBIDDEN_PATHS = %w[_includes _scripts assets/tailwind assets/webfonts tailwind.config.js].freeze
 
   module_function
 
@@ -22,6 +27,26 @@ module SiteContent
     errors.concat(news_errors(File.join(root, "_news"), bib_path))
     errors.concat(about_errors(about_path))
     errors.concat(experience_errors(File.join(root, "_data/experience.yml"), about_path))
+    errors.concat(override_errors(root))
+    errors
+  end
+
+  def override_errors(root)
+    errors = []
+    FORBIDDEN_PATHS.each do |rel|
+      next unless File.exist?(File.join(root, rel))
+
+      errors << "#{rel} exists. Do not add that path in this repo. The only committed theme overrides are _layouts/about.liquid and _sass/_themes.scss."
+    end
+    ALLOWED_OVERRIDES.each do |dir, allowed|
+      path = File.join(root, dir)
+      next unless Dir.exist?(path)
+
+      found = Dir.children(path).reject { |name| name.start_with?(".") }.sort
+      next if found == allowed.sort
+
+      errors << "#{dir} may contain only #{allowed.join(", ")}. Found #{found.join(", ")}. Do not add another theme override."
+    end
     errors
   end
 

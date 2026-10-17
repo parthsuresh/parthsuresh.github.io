@@ -117,6 +117,18 @@ class SiteContentCheckTest < Minitest::Test
     end
   end
 
+  def test_extra_layout_override_fails
+    Dir.mktmpdir do |root|
+      Dir.mkdir(File.join(root, "_layouts"))
+      File.write(File.join(root, "_layouts/about.liquid"), "")
+      File.write(File.join(root, "_layouts/post.liquid"), "")
+      errors = SiteContent.override_errors(root)
+      assert_equal 1, errors.size
+      assert_includes errors[0], "post.liquid"
+      assert_includes errors[0], "about.liquid"
+    end
+  end
+
   def test_current_site_passes
     errors = SiteContent.check_repo(ROOT)
     assert_empty errors, errors.join("\n")
