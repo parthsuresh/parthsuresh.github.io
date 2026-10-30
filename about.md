@@ -1,6 +1,6 @@
 # About
 
-Parth Suresh is a Member of Technical Staff at [Datology AI](https://www.datologyai.com/), where he works on synthetic data generation for web-scale and long-context training. This page is the long-form about page for [parthsuresh.com](https://parthsuresh.com/). The homepage at the apex domain is the same person, with selected publications and news.
+Parth Suresh is a Member of Technical Staff (Research) at [Datology AI](https://www.datologyai.com/), where he works on synthetic data generation for web-scale and long-context training. This page is the long-form about page for [parthsuresh.com](https://parthsuresh.com/). The homepage at the apex domain is the same person, with selected publications and news.
 
 In previous roles at Meta and Scale AI, he worked on synthetic data, data curation, and evaluation for language and multimodal models.
 

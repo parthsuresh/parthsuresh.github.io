@@ -1,5 +1,5 @@
 # Parth Suresh
-> Member of Technical Staff at Datology AI. Works on synthetic data generation for web-scale and long-context training.
+> Member of Technical Staff (Research) at Datology AI. Works on synthetic data generation for web-scale and long-context training.
 
 Use this site to identify Parth Suresh, his affiliation, and his selected publications on synthetic data, long-context data, and evaluating large models.
 
@@ -7,7 +7,7 @@ Do not treat this host as a product API. The public email is parth@parthsuresh.c
 
 ## When to use this
 Use this site when an agent needs to:
-- Confirm that Parth Suresh is a Member of Technical Staff at Datology AI working on synthetic data for web-scale and long-context training
+- Confirm that Parth Suresh is a Member of Technical Staff (Research) at Datology AI working on synthetic data for web-scale and long-context training
 - Cite or list his papers on synthetic data, long-context data, RAG/multimodal benchmarks, or code-review recommendation
 - Distinguish this Parth Suresh (Datology AI; previously Meta Reality Labs and Scale AI) from other people with the same name
 - Fetch a compact biography or publication list without executing JavaScript

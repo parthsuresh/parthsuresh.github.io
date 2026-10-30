@@ -1,8 +1,8 @@
 # Parth Suresh
 
-Member of Technical Staff at Datology AI. Works on synthetic data generation for web-scale and long-context data.
+Member of Technical Staff (Research) at Datology AI. Works on synthetic data generation for web-scale and long-context data.
 
-I'm a Member of Technical Staff at [Datology AI](https://www.datologyai.com/), where I work on synthetic data generation for web-scale and long-context data.
+I'm a Member of Technical Staff (Research) at [Datology AI](https://www.datologyai.com/), where I work on synthetic data generation for web-scale and long-context data.
 
 In previous roles at Meta and Scale AI, I worked on synthetic data, data curation, and evaluation for language and multimodal models.
 
