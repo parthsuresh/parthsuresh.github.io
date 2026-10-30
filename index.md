@@ -4,7 +4,7 @@ Member of Technical Staff at Datology AI. Works on synthetic data generation for
 
 I'm a Member of Technical Staff at [Datology AI](https://www.datologyai.com/), where I work on synthetic data generation for web-scale and long-context data.
 
-Previously, I was a Software Engineer (Machine Learning) at Meta Reality Labs, working on synthetic data, data curation, and benchmarks for language and multimodal models, including in egocentric and wearable settings. Before that I was an ML Research Engineer at Scale AI, focused on reasoning, synthetic data generation, and LLM judges. Earlier at Meta I worked at the intersection of developer productivity, software engineering, and machine learning.
+In previous roles at Meta and Scale AI, I worked on synthetic data, data curation, and evaluation for language and multimodal models.
 
 The question I keep coming back to is how we turn messy, real-world data into reliable signals for training and evaluating large models.
 
