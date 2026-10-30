@@ -3,7 +3,7 @@
 roles:
   - id: datology
     current: true
-    title: Member of Technical Staff
+    title: Member of Technical Staff (Research)
     organization: Datology AI
   - id: meta-reality-labs
     title: Software Engineer (Machine Learning)

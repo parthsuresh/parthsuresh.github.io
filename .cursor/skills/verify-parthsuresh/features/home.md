@@ -5,7 +5,7 @@
 ## Sub-features
 
 - `navbar` shows `about`, `publications`, and `news`.
-- `bio` names Member of Technical Staff at Datology AI.
+- `bio` names Member of Technical Staff (Research) at Datology AI.
 - `selected-papers` lists the papers marked selected in the bibliography.
 - `news-rows` shows the latest news sentences.
 
@@ -20,7 +20,7 @@ Preconditions: `doctor.sh` printed `doctor ok`.
 
 - Request the page. `curl -fsS -D /tmp/parthsuresh-verify-evidence/home.headers -o /tmp/parthsuresh-verify-evidence/home.html http://127.0.0.1:4000/` exits 0.
 - Confirm the navbar. `grep -q 'nav-link" href="/">about' /tmp/parthsuresh-verify-evidence/home.html` exits 0.
-- Confirm the current role is in the prose. `grep -q 'Member of Technical Staff at Datology AI' /tmp/parthsuresh-verify-evidence/home.html` exits 0.
+- Confirm the current role is in the prose. `grep -q 'Member of Technical Staff (Research) at Datology AI' /tmp/parthsuresh-verify-evidence/home.html` exits 0.
 - Confirm the job title is not the navbar label. `grep -q 'href="/">Member of Technical Staff' /tmp/parthsuresh-verify-evidence/home.html` exits 1.
 
 ## Gotchas
