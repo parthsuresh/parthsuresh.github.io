@@ -5,11 +5,5 @@ roles:
     current: true
     title: Member of Technical Staff (Research)
     organization: Datology AI
-  - id: meta-reality-labs
-    title: Software Engineer (Machine Learning)
-    organization: Meta Reality Labs
-  - id: scale
-    title: ML Research Engineer
-    organization: Scale AI
-  - id: meta-earlier
-    prose: Earlier at Meta
+  - id: previous
+    prose: previous roles at Meta and Scale AI
