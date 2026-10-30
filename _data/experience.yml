@@ -3,7 +3,7 @@
 roles:
   - id: datology
     current: true
-    title: Member of Technical Staff
+    title: Member of Technical Staff (Research)
     organization: Datology AI
   - id: previous
     prose: previous roles at Meta and Scale AI
