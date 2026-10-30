@@ -1,5 +1,6 @@
 # News
 
+- 2026-10-29: Released [BeyondWeb Ex Ante](https://www.datologyai.com/blog/beyondweb-ex-ante) with the Datology AI team ([X thread](https://x.com/parthsur/status/2115844888491380849)), a method for generating synthetic pretraining data with a measurable, controllable knowledge cutoff that is safe for backtesting - zero problematic claims across ~584k claims, at about 1.7x generation cost, with no measurable loss in downstream quality.
 - 2026-08-10: [CRAG-MM](https://arxiv.org/abs/2510.26160) won the Best Paper Award at KDD 2026 in the Datasets and Benchmarks track!
 - 2026-07-20: Joined [Datology AI](https://www.datologyai.com/) as a Member of Technical Staff (Research), working on synthetic data generation for web and long-context data.
 - 2026-06-03: Our paper [Plan, Watch, Recover](https://arxiv.org/abs/2606.04970), a benchmark and architectures for proactive procedural assistance, is now on arXiv.
